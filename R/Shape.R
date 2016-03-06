@@ -1,4 +1,4 @@
-Encoding("UTF-8")
+#Encoding("UTF-8")
 
 #'Returns if x is integer(0)
 #'@param x a vector

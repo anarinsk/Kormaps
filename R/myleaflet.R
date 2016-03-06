@@ -1,4 +1,4 @@
-Encoding("UTF-8")
+#Encoding("UTF-8")
 require(leaflet)
 
 #'Create a Leaflet map widget with multiple map layers and control

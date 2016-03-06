@@ -15,10 +15,10 @@ Imports:
     tmap,
     leaflet
 Suggests:
-    tmap,
-    leaflet
+    testthat,
+    knitr,
+    rmarkdown
 License: GPL-3
 LazyData: TRUE
-Suggests:
-    testthat
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr
