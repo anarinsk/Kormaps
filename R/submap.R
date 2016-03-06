@@ -5,9 +5,9 @@
 #'
 #' @return Subdata of class Shape of which code matched with area
 submap <-function(map,area){
-    code=area2code(area)
+    code<-area2code(area)
     if(is.na(code)) return(NULL)
-    else mydata=map[grep(paste0('^',code),map$code),]
+    else mydata<-map[grep(paste0('^',code),map$code),]
 }
 
 
@@ -24,12 +24,12 @@ is.integer0 <- function(x) {is.integer(x) && length(x) == 0L}
 #'
 #' @return a code if the area is found, else returns NA
 area2code<-function(area){
-    result=NA
-    pos=grep(area,areacode[[2]])
-    if(!is.integer0(pos)) result=areacode[pos,1]
+    result<-NA
+    pos<-grep(area,areacode[[2]])
+    if(!is.integer0(pos)) result<-areacode[pos,1]
     else {
-        pos=grep(areacode[[3]],area)
-        if(!is.integer0(pos)) result=areacode[pos,1]
+        pos<-grep(areacode[[3]],area)
+        if(!is.integer0(pos)) result<-areacode[pos,1]
     }
     result
 }

@@ -37,6 +37,7 @@ Kormaps 패키지와 tmap 패키지를 이용하면 단계구분도를 쉽게 �
 
 ```{r,message=FALSE,fig.height=5,fig.width=5}
 require(Kormaps)
+require(Kormapsdata)
 require(tmap)
 
 qtm(kormap1)
