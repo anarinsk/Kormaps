@@ -1,3 +1,4 @@
+#Encoding("UTF-8")
 require(leaflet)
 
 #'Create a Leaflet map widget with multiple map layers and control
@@ -14,16 +15,16 @@ require(leaflet)
 #'
 #'@examples myleaflet(korpopmap1,choices=c("총인구_명","외국인_계_명"))
 myleaflet=function(map,choices,popupcol=NULL,palette="Reds"){
-        res=leaflet::leaflet(map) %>%
+        res=leaflet(map) %>%
                 addProviderTiles("CartoDB.Positron")
         count=length(choices)
         Palette<-list()
         mypopup<-list()
         for(i in 1:count){
-                Palette[[i]] <- leaflet::colorNumeric(palette = palette, domain=map[[choices[i]]])
+                Palette[[i]] <- colorNumeric(palette = palette, domain=map[[choices[i]]])
                 if(is.null(popupcol)) popupcol="name"
                 mypopup[[i]]=paste0(map@data[[popupcol]],":",map@data[[choices[i]]])
-                res=leaflet::addPolygons(res,stroke=FALSE,
+                res=addPolygons(res,stroke=FALSE,
                                 smoothFactor = 0.2,
                                 fillOpacity = .8,
                                 popup=mypopup[[i]],
@@ -37,7 +38,7 @@ myleaflet=function(map,choices,popupcol=NULL,palette="Reds"){
                 #         )
         }
         if(count>=1){
-                res=leaflet::addLayersControl(res,
+                res=addLayersControl(res,
                                      baseGroups=choices,
                                      position = "bottomleft",
                                      options = layersControlOptions(collapsed = FALSE)

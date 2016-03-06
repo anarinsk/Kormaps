@@ -2,4 +2,4 @@ library(testthat)
 library(Kormaps)
 library(tmap)
 
-qtm("kormap1")
+qtm(submap("kormap1","부산"))

@@ -70,15 +70,23 @@ qtm(submap(korpopmap3,"대구"),"아파트_호")
 ```
 
 
-## More Examples
+## leaflet을 이용한 동적인 지도
 
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
+leaflet패키지는 자바를 이용하여 동적인 지도를 그려줍니다. Kormaps패키지에 포함되어 있는 myleaflet()함수는 여러 layer를 가지는 동적인 지도를 쉽게 구현해줍니다. 이 단계구분도는 축소/확대가 가능하고 클릭시 행정구역과 인구통계정보를 보여줍니다. 
 
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+
+```{r,results='asis'}
+require(leaflet)
+myleaflet(korpopmap1,"총인구_명")
 ```
 
-Also a quote using `>`:
+또한 하나의 지도에 여러개의 layer를 넣는 것도 가능합니다.
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+```{r,results='asis'}
+require(leaflet)
+myleaflet(submap(korpopmap3,"광주"),choices=c("남자_명","여자_명","주택_계_호"))
+```
+
+또한 이를 이용하여 웹 어플리케이션을 제작하는 것도 가능합니다. 다음 주소를 가보시면 이를 이용해 구현한 웹앱을 보실수 있습니다.
+
+[http://r-meta.com:3838/tmap2](http://r-meta.com:3838/tmap2)

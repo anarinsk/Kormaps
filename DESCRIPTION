@@ -15,6 +15,7 @@ Imports:
     tmap,
     leaflet
 Suggests:
+    Kormapsdata,
     testthat,
     knitr,
     rmarkdown

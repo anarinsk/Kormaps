@@ -1,59 +1,3 @@
-#Encoding("UTF-8")
-
-#'Returns if x is integer(0)
-#'@param x a vector
-#'
-#'@return a logical value: TRUE for integer(0) otherwise FALSE
-is.integer0 <- function(x) {is.integer(x) && length(x) == 0L}
-
-
-#'seek area from data areacode and returns the code
-#'
-#'@param area a string looking for
-#'
-#'@return a code if the area is found, else returns NA
-area2code=function(area){
-        result=NA
-        pos=grep(area,areacode[[2]])
-        if(!is.integer0(pos)) result=areacode[pos,1]
-        else {
-                pos=grep(areacode[[3]],area)
-                if(!is.integer0(pos)) result=areacode[pos,1]
-        }
-        result
-}
-
-#'Select a subdata of map
-#'
-#'@param map an object of class Shape(SpatialPolygonsDataFrame)
-#'@param area a string of area looking for
-#'
-#'@return Subdata of class Shape of which code matched with area
-submap=function(map,area){
-        code=area2code(area)
-        if(is.na(code)) return(NULL)
-        else mydata=map[grep(paste0('^',code),map$code),]
-}
-
-
-#' Merge data to an object of class SpatialPolygonsDataFrame
-#'
-#'@param map an object of class Shape(SpatialPolygonsDataFrame)
-#'@param data a data.frame
-#'@param code a name of variable of shp map data and data.frame to be matched with
-#'
-#'@return a Shape object with appended data
-mergeData2Map=function(map,data,code="code"){
-
-        requireNamespace(tmap)  #for append_data
-
-        map@data$code1=as.character(map@data[[code]])
-
-        data$code1=as.character(data[[code]])
-        result=append_data(map,data,key.shp="code1",key.data="code1")
-        result
-}
-
 #' Korean administrative area name with code
 #'
 #' A dataset containing the code and the name of Korean administrative area
@@ -112,7 +56,6 @@ mergeData2Map=function(map,data,code="code"){
 #' with merged population census data 2010
 #'
 #' @format A Shape data with length of 16
-#'@examples qtm("korpopmap1","총인구_명")
 "korpopmap1"
 
 

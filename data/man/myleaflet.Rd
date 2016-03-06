@@ -4,7 +4,7 @@
 \alias{myleaflet}
 \title{Create a Leaflet map widget with multiple map layers and control}
 \usage{
-myleaflet(map, choices, popupcol = NULL, palette = "Reds")
+myleaflet(map, palette = "Reds", choices, popupcol = NULL)
 }
 \arguments{
 \item{map}{a data object (currently supported objects are matrices, data frames,
@@ -12,11 +12,11 @@ and spatial objects from the sp package of classes SpatialPoints,
 SpatialPointsDataFrame, Polygon, Polygons, SpatialPolygons,
 SpatialPolygonsDataFrame, Line, Lines, SpatialLines, and SpatialLinesDataFrame)}
 
+\item{palette}{The colors or color function that values will be mapped to}
+
 \item{choices}{a character vector specify the column name of map data which being used as a color scale}
 
 \item{popupcol}{a string specify the column name of map data which being used as a pop-up window}
-
-\item{palette}{The colors or color function that values will be mapped to}
 }
 \value{
 A HTML widget object, on which we can add graphics layers using %>% (see examples)
