@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Encoding(\"UTF-8\")\nrequire(leaflet)\n\n#'Create a Leaflet map widget with multiple map layers and control\n#'\n#'@param map a data object (currently supported objects are matrices, data frames,\n#'        and spatial objects from the sp package of classes SpatialPoints,\n#'        SpatialPointsDataFrame, Polygon, Polygons, SpatialPolygons,\n#'        SpatialPolygonsDataFrame, Line, Lines, SpatialLines, and SpatialLinesDataFrame)\n#'@param palette The colors or color function that values will be mapped to\n#'@param choices a character vector specify the column name of map data which being used as a color scale\n#'@param popupcol a string specify the column name of map data which being used as a pop-up window\n#'\n#'@return A HTML widget object, on which we can add graphics layers using %>% (see examples)\n#'\n#'@examples myleaflet(korpopmap1,choices=c(\"총인구_명\",\"외국인_계_명\"))\nmyleaflet=function(map,palette=\"Reds\",choices,popupcol=NULL){\n        res=leaflet(map) %>%\n                addProviderTiles(\"CartoDB.Positron\")\n        count=length(choices)\n        Palette<-list()\n        mypopup<-list()\n        for(i in 1:count){\n                Palette[[i]] <- colorNumeric(palette = palette, domain=map[[choices[i]]])\n                if(is.null(popupcol)) popupcol=\"행정구역별_읍면동\"\n                mypopup[[i]]=paste0(map@data[[popupcol]],\":\",map@data[[choices[i]]])\n                res=addPolygons(res,stroke=FALSE,\n                                smoothFactor = 0.2,\n                                fillOpacity = .8,\n                                popup=mypopup[[i]],\n                                color= ~Palette[[i]](map@data[[choices[i]]]),\n                                group=choices[i]\n                )\n                # %>%\n                #         addLegend(position = \"bottomright\",\n                #                   pal = Palette[[i]], values = ~map@data[[choices[i]]],\n                #                   title=choices[i]\n                #         )\n        }\n        if(count>=1){\n                res=addLayersControl(res,\n                                     baseGroups=choices,\n                                     position = \"bottomleft\",\n                                     options = layersControlOptions(collapsed = FALSE)\n                )\n        }\n        res\n}\n",
+    "created" : 1457243349266.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2613709912",
+    "id" : "31F8A61",
+    "lastKnownWriteTime" : 1457247936,
+    "last_content_update" : 1457247936912,
+    "path" : "~/ownCloud/Documents/Kormaps/R/myleaflet.R",
+    "project_path" : "R/myleaflet.R",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

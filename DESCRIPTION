@@ -1,0 +1,24 @@
+Package: Kormaps
+Type: Package
+Title: A Shape Data Of Korean Administrative Area(2010) With Some Functions For
+    Choropleth Maps.
+Version: 0.1.0
+Depends: R (>= 3.1.0)
+Authors@R: person("Keon-Woong", "Moon", email = "cardiomoon@gmail.com",
+  role = c("aut", "cre"))
+Maintainer: Keon-Woong Moon<cardiomoon@gmail.com>
+Description: A Shape data Of Korean Administrative Area(2010) of three levels
+    and some functions for easy choropleth maps with Korean census data.
+URL: https:://github.com/cardiomoon/Kormaps
+BugReports: https:://github.com/cardiomoon/Kormaps/issues
+Imports:
+    tmap,
+    leaflet
+Suggests:
+    tmap,
+    leaflet
+License: GPL-3
+LazyData: TRUE
+Suggests:
+    testthat
+RoxygenNote: 5.0.1

@@ -1,0 +1,9 @@
+{
+    "path" : "~/ownCloud/Documents/Kormaps",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
