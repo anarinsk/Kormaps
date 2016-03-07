@@ -2,17 +2,14 @@
 % Please edit documentation in R/submap.R
 \name{is.integer0}
 \alias{is.integer0}
-\title{Returns if x is integer(0)}
+\title{Returns whether x is integer(0)}
 \usage{
 is.integer0(x)
 }
 \arguments{
-\item{x}{a vector}
-}
-\value{
-a logical value: TRUE for integer(0) otherwise FALSE
+\item{x}{a numeric vector}
 }
 \description{
-Returns if x is integer(0)
+Returns whether x is integer(0)
 }
 

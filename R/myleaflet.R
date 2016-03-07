@@ -1,4 +1,6 @@
 require(leaflet)
+require(magrittr)
+
 
 #'Create a Leaflet map widget with multiple map layers and control
 #'
@@ -12,10 +14,9 @@ require(leaflet)
 #'
 #'@return A HTML widget object, on which we can add graphics layers using %>% (see examples)
 #'
-#'@examples myleaflet(korpopmap1,choices=c("총인구_명","외국인_계_명"))
 myleaflet=function(map,choices,popupcol=NULL,palette="Reds"){
         res=leaflet::leaflet(map) %>%
-                addProviderTiles("CartoDB.Positron")
+                leaflet::addProviderTiles("CartoDB.Positron")
         count=length(choices)
         Palette<-list()
         mypopup<-list()

@@ -1,3 +1,5 @@
+require(tmap)  #for append_data
+
 #' Merge data to an object of class SpatialPolygonsDataFrame
 #'
 #'@param map an object of class Shape(SpatialPolygonsDataFrame)
@@ -7,9 +9,7 @@
 #'@return a Shape object with appended data
 mergeData2Map=function(map,data,code="code"){
 
-    requireNamespace(tmap)  #for append_data
-
-    map@data$code1=as.character(map@data[[code]])
+     map@data$code1=as.character(map@data[[code]])
 
     data$code1=as.character(data[[code]])
     result=append_data(map,data,key.shp="code1",key.data="code1")

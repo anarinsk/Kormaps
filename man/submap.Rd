@@ -2,7 +2,7 @@
 % Please edit documentation in R/submap.R
 \name{submap}
 \alias{submap}
-\title{Select a subdata of map}
+\title{Select subdata of map}
 \usage{
 submap(map, area)
 }
@@ -15,6 +15,6 @@ submap(map, area)
 Subdata of class Shape of which code matched with area
 }
 \description{
-Select a subdata of map
+Select subdata of map
 }
 
