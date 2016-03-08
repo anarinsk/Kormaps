@@ -13,22 +13,13 @@ require(magrittr)
 #'@param popupcol a string specify the column name of map data which being used as a pop-up window
 #'
 #'@return A HTML widget object, on which we can add graphics layers using %>% (see examples)
-<<<<<<< HEAD
 #'
-myleaflet=function(map,choices,popupcol=NULL,palette="Reds"){
-        res=leaflet::leaflet(map) %>%
-                leaflet::addProviderTiles("CartoDB.Positron")
-<<<<<<< HEAD
-=======
 #'@export
 myleaflet=function(map,choices,popupcol=NULL,palette="Reds",tile=NULL){
 
         res=leaflet::leaflet(map)
         if(is.null(tile)) res<-leaflet::addTiles(res)
         else res<-leaflet::addProviderTiles(res,tile)
->>>>>>> v0.1.0
-=======
->>>>>>> origin/master
         count=length(choices)
         Palette<-list()
         mypopup<-list()

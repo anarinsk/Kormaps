@@ -7,6 +7,7 @@ require(tmap)  #for append_data
 #'@param code a name of variable of shp map data and data.frame to be matched with
 #'
 #'@return a Shape object with appended data
+#'@export
 mergeData2Map=function(map,data,code="code"){
 
      map@data$code1=as.character(map@data[[code]])
