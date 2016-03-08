@@ -113,6 +113,7 @@ qtm(submap(korpopmap3,"대구"),"아파트_호")+tm_layout(fontfamily="NanumGoth
 
 ![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png)
 
+
 또한 여러개의 지역으로 지도를 그리고 여러개의 layer를 넣는 것도 가능합니다.
 
 
