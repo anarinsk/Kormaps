@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Kormaps 패키지는 한국지도를 이용하여 각종 통계자료와 행정구역을 연계하여 단계구분도(Choropleth map)을 쉽게 만들 수 있게 하기 위하여 패키지를 제작하였습니다. 한국행정지도 Shape파일은 통계지리정보서비스(sgis.go.kr)에서 제공하는 2010년 행정경계구역지도 Shape 파일을 국제규격에 맞게 형식을 변형한 후 빠른 속도로 단계구분도를 그릴 수 있도록 파일을 단순화하여 만들었습니다. Shape파일 단순화에 대한 자세한 내용은 패키지 제작자가 쓴 ["웹에서 클릭만으로 하는 R 통계분석(한나래,2015)"](http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=66714863) 책을 참조하십시요.  static image를 만들고자 할 때는 tmap패키지를 이용하면 쉽게 단계구분도를 그릴 수 있으며 웹상에서 축소/확대가 가능한 단계구분도를 그리고 싶을 때는 leaflet 패키지를 이용하면 좋습니다. 또한 국가통계포털(kosis.kr)에서 제공하는 2010년 인구총조사 데이타와 지도 데이타를 합친 데이터를 제공하므로 단계구분도를 연습해보는데 도움이 될 것입니다. 패키지에서 제공하는 행정구역지도 데이터는 다음과 같습니다. 
+Kormaps 패키지는 한국한국행정지도 Shape파일을 R에서 사용하기 쉽도록 변환한 패키지입니다. 이 패키지를 이용하면 각종 통계자료와 행정구역을 연계하여 단계구분도(Choropleth map)을 쉽게 만들 수 있게 하기 위하여 패키지를 제작하였습니다. 한국행정지도 Shape파일은 통계지리정보서비스(sgis.go.kr)에서 제공하는 2010년 행정경계구역지도 Shape 파일을 빠른 속도로 단계구분도를 그릴 수 있도록 파일을 단순화한 후 국제규격에 맞게 형식을 변형한 후 만들었습니다. Shape파일 단순화에 대한 자세한 내용은 패키지 제작자가 쓴 ["웹에서 클릭만으로 하는 R 통계분석(한나래,2015)"](http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=66714863) 책을 참조하십시요.  static image를 만들고자 할 때는 tmap패키지를 이용하면 쉽게 단계구분도를 그릴 수 있으며 웹상에서 축소/확대가 가능한 단계구분도를 그리고 싶을 때는 leaflet 패키지를 이용하면 좋습니다. 또한 국가통계포털(kosis.kr)에서 제공하는 2010년 인구총조사 데이타와 지도 데이타를 합친 데이터를 제공하므로 단계구분도를 연습해보는데 도움이 될 것입니다. 패키지에서 제공하는 행정구역지도 데이터는 다음과 같습니다. 
 
 - kormap1: 2010년 행정구역지도 level1(시/도별)
 - kormap2: 2010년 행정구역지도 level2(시/군/구)
@@ -37,56 +37,66 @@ Kormaps 패키지와 tmap 패키지를 이용하면 단계구분도를 쉽게 �
 
 ```{r,message=FALSE,fig.height=5,fig.width=5}
 require(Kormaps)
-require(Kormapsdata)
 require(tmap)
+require(magrittr)
+require(leaflet)
 
 qtm(kormap1)
 ```
 
 2010년 인구통계자료와 통합된 지도는 korpopmap1입니다. 다음은 총인구_명으로 구분된 단계구분도입니다.
 
-```{r}
-qtm(korpopmap1,"총인구_명",text="name")
+```{r,message=FALSE,fig.height=5,fig.width=5}
+qtm(korpopmap1,"총인구_명")+tm_layout(fontfamily="NanumGothic")
 ```
 
 인구통계자료에 포함된 항목은 다음과 같습니다.
-```{r}
+```{r,comment=NA}
 colnames(korpopmap1@data)
 ```
 
 시/군/구 지도는 korpopmap2입니다.
-```{r}
-qtm(korpopmap2,"총인구_명")
+```{r,message=FALSE,fig.height=5,fig.width=5}
+qtm(korpopmap2,"총인구_명")+tm_layout(fontfamily="NanumGothic")
 ```
 
+
 submap() 함수는 지도 중에서 원하는 지역만 골라서 지도를 그릴 수 있도록 해줍니다.
-```{r}
+```{r,fig.width=5,fig.height=5}
 Seoul2=submap(korpopmap2,"서울")
-qtm(Seoul2,"외국인_계_명")
+qtm(Seoul2,"외국인_계_명")+tm_layout(fontfamily="NanumGothic")
 ```
 
 읍/면/동 지도는 korpopmap3입니다. 대구시의 읍/면/동 단계구분도를 보려면 다음과 같이 합니다.
-```{r}
-qtm(submap(korpopmap3,"대구"),"아파트_호")
+```{r,fig.width=5,fig.height=5}
+qtm(submap(korpopmap3,"대구"),"아파트_호")+tm_layout(fontfamily="NanumGothic")
 ```
 
+또한 여러개의 지역으로 지도를 그리고 여러개의 layer를 넣는 것도 가능합니다.
+
+```{r,fig.width=5,fig.height=5}
+qtm(submap(korpopmap3,c("전라","광주")),"총인구_명")+
+    tm_layout(title="호남지역 읍/면/동별 총인구수",fontfamily="NanumGothic")
+```
 
 ## leaflet을 이용한 동적인 지도
 
 leaflet패키지는 자바를 이용하여 동적인 지도를 그려줍니다. Kormaps패키지에 포함되어 있는 myleaflet()함수는 여러 layer를 가지는 동적인 지도를 쉽게 구현해줍니다. 이 단계구분도는 축소/확대가 가능하고 클릭시 행정구역과 인구통계정보를 보여줍니다. 
 
 
-```{r,results='asis'}
-require(leaflet)
+```{r,results='asis',fig.width=5,fig.height=5}
 myleaflet(korpopmap1,"총인구_명")
 ```
 
 또한 하나의 지도에 여러개의 layer를 넣는 것도 가능합니다.
 
-```{r,results='asis'}
-require(leaflet)
-myleaflet(submap(korpopmap3,"광주"),choices=c("남자_명","여자_명","주택_계_호"))
+```{r,results='asis',fig.width=5,fig.height=5}
+
+myleaflet(submap(korpopmap3,c("전라","광주")),choices=c("남자_명","여자_명","주택_계_호"))
 ```
+
+
+
 
 또한 이를 이용하여 웹 어플리케이션을 제작하는 것도 가능합니다. 다음 주소를 가보시면 이를 이용해 구현한 웹앱을 보실수 있습니다.
 

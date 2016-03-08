@@ -1,6 +1,6 @@
 Package: Kormaps
 Type: Package
-Title: A Shape Data Of Korean Administrative Area(2010) With Some Functions For
+Title: Shape Datas of Korean Administrative Area(2010) With Some Functions For
     Choropleth Maps.
 Version: 0.1.0
 Depends: R (>= 3.1.0)

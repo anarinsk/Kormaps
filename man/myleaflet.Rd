@@ -4,7 +4,7 @@
 \alias{myleaflet}
 \title{Create a Leaflet map widget with multiple map layers and control}
 \usage{
-myleaflet(map, choices, popupcol = NULL, palette = "Reds")
+myleaflet(map, choices, popupcol = NULL, palette = "Reds", tile = NULL)
 }
 \arguments{
 \item{map}{a data object (currently supported objects are matrices, data frames,
@@ -23,8 +23,5 @@ A HTML widget object, on which we can add graphics layers using %>% (see example
 }
 \description{
 Create a Leaflet map widget with multiple map layers and control
-}
-\examples{
-myleaflet(korpopmap1,choices=c("총인구_명","외국인_계_명"))
 }
 
