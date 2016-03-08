@@ -1,7 +1,12 @@
 Package: Kormaps
 Type: Package
+<<<<<<< HEAD
+Title: A Shape Data Of Korean Administrative Area(2010) With Some Functions For
+    Choropleth Maps
+=======
 Title: Shape Datas of Korean Administrative Area(2010) With Some Functions For
     Choropleth Maps.
+>>>>>>> v0.1.0
 Version: 0.1.0
 Depends: R (>= 3.1.0)
 Authors@R: person("Keon-Woong", "Moon", email = "cardiomoon@gmail.com",
@@ -15,9 +20,11 @@ Imports:
     tmap,
     leaflet
 Suggests:
+    Kormapsdata,
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    magrittr
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 5.0.1
