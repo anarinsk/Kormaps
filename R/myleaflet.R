@@ -18,6 +18,7 @@ require(magrittr)
 myleaflet=function(map,choices,popupcol=NULL,palette="Reds"){
         res=leaflet::leaflet(map) %>%
                 leaflet::addProviderTiles("CartoDB.Positron")
+<<<<<<< HEAD
 =======
 #'@export
 myleaflet=function(map,choices,popupcol=NULL,palette="Reds",tile=NULL){
@@ -26,6 +27,8 @@ myleaflet=function(map,choices,popupcol=NULL,palette="Reds",tile=NULL){
         if(is.null(tile)) res<-leaflet::addTiles(res)
         else res<-leaflet::addProviderTiles(res,tile)
 >>>>>>> v0.1.0
+=======
+>>>>>>> origin/master
         count=length(choices)
         Palette<-list()
         mypopup<-list()

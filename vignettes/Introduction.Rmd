@@ -48,10 +48,14 @@ qtm(kormap1)
 
 ```{r,message=FALSE,fig.height=5,fig.width=5}
 <<<<<<< HEAD
+<<<<<<< HEAD
 qtm(korpopmap1,"총인구_명")
 =======
 qtm(korpopmap1,"총인구_명")+tm_layout(fontfamily="NanumGothic")
 >>>>>>> v0.1.0
+=======
+qtm(korpopmap1,"총인구_명")
+>>>>>>> origin/master
 ```
 
 인구통계자료에 포함된 항목은 다음과 같습니다.
@@ -62,6 +66,9 @@ colnames(korpopmap1@data)
 시/군/구 지도는 korpopmap2입니다.
 ```{r,message=FALSE,fig.height=5,fig.width=5}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
 qtm(korpopmap2,"총인구_명")
 ```
 
@@ -112,12 +119,15 @@ area2code <- function(area){
 }
 
 ```
+<<<<<<< HEAD
 =======
 qtm(korpopmap2,"총인구_명")+tm_layout(fontfamily="NanumGothic")
 ```
 
 
 >>>>>>> v0.1.0
+=======
+>>>>>>> origin/master
 submap() 함수는 지도 중에서 원하는 지역만 골라서 지도를 그릴 수 있도록 해줍니다.
 ```{r,fig.width=5,fig.height=5}
 Seoul2=submap(korpopmap2,"서울")
@@ -146,6 +156,7 @@ leaflet패키지는 자바를 이용하여 동적인 지도를 그려줍니다. 
 #require(leaflet)
 #myleaflet(korpopmap1,"총인구_명")
 ``
+<<<<<<< HEAD
 
 또한 하나의 지도에 여러개의 layer를 넣는 것도 가능합니다.
 
@@ -163,6 +174,14 @@ myleaflet(korpopmap1,"총인구_명")
 
 myleaflet(submap(korpopmap3,c("전라","광주")),choices=c("남자_명","여자_명","주택_계_호"))
 >>>>>>> v0.1.0
+=======
+
+또한 하나의 지도에 여러개의 layer를 넣는 것도 가능합니다.
+
+```{r,results='asis'}
+#require(leaflet)
+#myleaflet(submap(korpopmap3,"광주"),choices=c("남자_명","여자_명","주택_계_호"))
+>>>>>>> origin/master
 ```
 
 

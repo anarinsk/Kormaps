@@ -5,9 +5,12 @@
 #'
 #' @return Subdata of class Shape of which code matched with area
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #' @export
 >>>>>>> v0.1.0
+=======
+>>>>>>> origin/master
 submap <- function(map,area){
     code<-area2code(area)
     if(length(code)>0) {
@@ -22,13 +25,17 @@ submap <- function(map,area){
 #' @param x a numeric vector
 is.integer0 <- function(x) { is.integer(x) && length(x) == 0L}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
 
 #' Paste '|' between vectors
 #' @param ... one or more R objects, to be converted to character vectors.
 paste_or <- function(...) {
     paste(...,sep="|")
 }
+<<<<<<< HEAD
 >>>>>>> v0.1.0
 
 #' Paste '|' between vectors
@@ -36,6 +43,8 @@ paste_or <- function(...) {
 paste_or <- function(...) {
     paste(...,sep="|")
 }
+=======
+>>>>>>> origin/master
 
 #' Seek area from data areacode and returns the code
 #'
@@ -43,9 +52,12 @@ paste_or <- function(...) {
 #'
 #' @return a code if the area is found, else returns NA
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #' @export
 >>>>>>> v0.1.0
+=======
+>>>>>>> origin/master
 area2code <- function(area){
     result<-c()
     for(i in 1:length(area)){
